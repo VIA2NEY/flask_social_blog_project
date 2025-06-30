@@ -1,2 +1,3 @@
 pip install "flask" "werkzeug"
 pip install python-dotenv
+pip install flask-wtf
