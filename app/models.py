@@ -9,6 +9,14 @@ from hashlib import md5
 from datetime import datetime
 
 
+followers = sa.Table(
+    'followers',
+    db.metadata,
+    sa.Column('follower_id', sa.Integer, sa.ForeignKey('user.id')),
+    sa.Column('followed_id', sa.Integer, sa.ForeignKey('user.id'))
+)
+
+
 class User(UserMixin, db.Model):
     id = sa.Column(sa.Integer, primary_key=True)
     username = sa.Column(sa.String(80), unique=True, nullable=False)
@@ -16,6 +24,25 @@ class User(UserMixin, db.Model):
     password_hash = sa.Column(sa.String(256), nullable=False)
     about_me = sa.Column(sa.String(140))
     last_seen = sa.Column(sa.DateTime, nullable=True, default= lambda: datetime.utcnow())
+    
+    # Les utilisateurs que je suis
+    following = db.relationship(
+        'User',
+        secondary=followers,
+        primaryjoin=(followers.c.follower_id == id),
+        secondaryjoin=(followers.c.followed_id == id),
+        lazy='dynamic',
+        overlaps="followers"
+    )
+    # Les utilisateurs qui me suivent
+    followers = db.relationship(
+        'User',
+        secondary=followers,
+        primaryjoin=(followers.c.followed_id == id),
+        secondaryjoin=(followers.c.follower_id == id),
+        lazy='dynamic',
+        overlaps="following"
+    )
 
     posts = so.relationship('Post', back_populates='author')
 
@@ -36,6 +63,38 @@ class User(UserMixin, db.Model):
     @login.user_loader
     def load_user(id):
         return db.session.get(User, int(id))
+        
+
+    def is_following(self, user):
+        return self.following.filter(
+            followers.c.followed_id == user.id).count() > 0
+    
+    def follow(self, user):
+        if not self.is_following(user):
+            self.following.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.following.remove(user)
+
+    def followers_count(self):
+        return self.followers.count()
+        
+    def following_count(self):
+        return self.following.count()
+    
+    def following_users_post(self):
+
+        # Avoir tous les posts des utilisateurs que je suis
+        followed = Post.query.join(
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id)
+        
+        # Avoir mes propres posts
+        own = Post.query.filter_by(user_id=self.id)
+
+        return followed.union(own).order_by(Post.timestamp.desc())
+        # return followed
     
 
 class Post(db.Model):
