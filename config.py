@@ -17,3 +17,6 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['graceful.marten.wtte@letterhaven.net']
+
+    
+    POSTS_PER_PAGE = 10
