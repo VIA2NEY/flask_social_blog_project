@@ -133,7 +133,7 @@ def user(username):
 
     page = request.args.get('page', 1, type=int)
     posts = db.paginate(
-        Post.query.order_by(Post.timestamp.desc()),
+        Post.query.order_by(Post.timestamp.desc()).filter_by(author=user),
         page=page,
         per_page=app.config['POSTS_PER_PAGE'],
         error_out=False
