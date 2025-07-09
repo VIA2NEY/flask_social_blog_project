@@ -32,6 +32,73 @@
 
 </details>
 
+
+<details>
+<summary>Ajout du fichier app/cli.py pour ajouter des commandes personnaliser à la commande flask</summary>
+
+- Ce fichier contient les commandes personnaliser pour le volet de traduction ajouter aux commandes de flask. Ces commandes seront accessible depuis le terminal et les voici.
+
+  - `flask translate init LANG` pour ajouter une nouvelle langue
+  - `flask translate update` pour mettre à jour tous les langues après avoir modifié les marqueurs de langage _() et _l()
+  - `flask translate compile` pour compiler tous les depots de langues apres avoir modifie les marqueurs de langage _() et _l()
+
+- Plus d'informations:
+
+Console 
+```
+flask --help
+Usage: flask [OPTIONS] COMMAND [ARGS]...
+
+  A general utility script for Flask applications.
+
+  An application to load must be given with the '--app' option, 'FLASK_APP'
+  environment variable, or with a 'wsgi.py' or 'app.py' file in the current
+  directory.
+
+Options:
+  -e, --env-file FILE   Load environment variables from this file, taking
+                        precedence over those set by '.env' and '.flaskenv'.
+                        Variables set directly in the environment take highest
+                        precedence. python-dotenv must be installed.
+  -A, --app IMPORT      The Flask application or factory function to load, in
+                        the form 'module:name'. Module can be a dotted import
+                        or file path. Name is not required if it is 'app',
+                        'application', 'create_app', or 'make_app', and can be
+                        'name(args)' to pass arguments.
+  --debug / --no-debug  Set debug mode.
+  --version             Show the Flask version.
+  --help                Show this message and exit.
+
+Commands:
+  db         Perform database migrations.
+  routes     Show the routes for the app.
+  run        Run a development server.
+  shell      Run a shell in the app context.
+
+Commands:
+  db         Perform database migrations.
+  routes     Show the routes for the app.
+  run        Run a development server.
+  shell      Run a shell in the app context.
+  ->translate  Translation and localization commands.<- Viens d'etre ajouter grace a app/cli.py
+```
+PUIS
+```
+flask translate --help
+Usage: flask translate [OPTIONS] COMMAND [ARGS]...
+
+  Translation and localization commands.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  compile  Compile all languages.
+  init     Initialize a new language.
+  update   Update all languages.
+```
+</details>
+
 ## Tuto Link
 
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world

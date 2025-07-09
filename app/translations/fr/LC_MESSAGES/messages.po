@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-09 19:06+0000\n"
+"POT-Creation-Date: 2025-07-09 23:11+0000\n"
 "PO-Revision-Date: 2025-07-06 23:49+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -75,6 +75,47 @@ msgstr "Dites quelque chose"
 msgid "Request Password Reset"
 msgstr "Saisissez à nouveau le mot de passe"
 
+#: app/routes.py:24
+msgid "Your post is now live!"
+msgstr "Votre publication est maintenant en ligne !"
+
+#: app/routes.py:118
+msgid "Congratulations, you are now a registered user!"
+msgstr "Félicitations, vous êtes désormais un utilisateur inscrit !"
+
+#: app/routes.py:181 app/routes.py:206
+#, python-brace-format
+msgid "User {username} not found."
+msgstr "Utilisateur {username} introuvable."
+
+#: app/routes.py:185
+msgid "You cannot follow yourself!"
+msgstr "Vous ne pouvez pas vous suivre vous-même !"
+
+#: app/routes.py:191
+#, python-brace-format
+msgid "You are following {username}!"
+msgstr "Vous suivez {username} !"
+
+#: app/routes.py:210
+msgid "You cannot unfollow yourself!"
+msgstr "Vous ne pouvez pas vous désabonner de vous-même !"
+
+#: app/routes.py:216
+#, python-brace-format
+msgid "You are not following {username}."
+msgstr "Vous ne suivez pas {username}."
+
+#: app/routes.py:233
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
+"Vérifiez votre e-mail pour les instructions permettant de réinitialiser "
+"votre mot de passe."
+
+#: app/routes.py:251
+msgid "Your password has been reset."
+msgstr "Votre mot de passe a été réinitialisé."
+
 #: app/templates/404.html:4
 msgid "File Not Found"
 msgstr "Fichier introuvable"
@@ -88,9 +129,21 @@ msgstr "%(username)s a dit %(when)s"
 msgid "Welcome to Microblog"
 msgstr "Bienvenue sur Microblog"
 
+#: app/templates/base.html:27
+msgid "Home"
+msgstr "Accueil"
+
+#: app/templates/base.html:30
+msgid "Explore"
+msgstr "Explorer"
+
 #: app/templates/base.html:36
 msgid "Login"
 msgstr "Connexion"
+
+#: app/templates/base.html:43
+msgid "Logout"
+msgstr "Deconnexion"
 
 #: app/templates/edit_profile.html:5
 msgid "Edit Profile"
@@ -100,6 +153,14 @@ msgstr "Modifier le profil"
 #, python-format
 msgid "Hi, %(username)s!"
 msgstr "Salut, %(username)s!"
+
+#: app/templates/index.html:16 app/templates/user.html:39
+msgid "Newer posts"
+msgstr "Nouveaux posts"
+
+#: app/templates/index.html:21 app/templates/user.html:44
+msgid "Older posts"
+msgstr "posts plus anciens"
 
 #: app/templates/login.html:7
 msgid "New User?"
@@ -118,11 +179,21 @@ msgstr "Mot de passe oublié ?"
 msgid "Click to Reset It"
 msgstr "Cliquez ici pour le réinitialiser"
 
+#: app/templates/reset_password.html:5
+#: app/templates/reset_password_request.html:5
+msgid "Reset Password"
+msgstr "Réinitialiser le mot de passe"
+
 #: app/templates/user.html:8
 msgid "User"
 msgstr "Utilisateur"
 
+#: app/templates/user.html:10
+msgid "Last seen"
+msgstr "Dernière connexion"
+
 #: app/templates/user.html:13
+#, fuzzy
 msgid "Edit your profile"
 msgstr "Modifier votre profil"
 
