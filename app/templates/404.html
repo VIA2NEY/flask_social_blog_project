@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>La ressource recherchez n'a pas été trouvé</h1>
+    <h1>{{ _('File Not Found') }}</h1>
     <p><a href="{{ url_for('index') }}">Retour</a></p>
 {% endblock %}

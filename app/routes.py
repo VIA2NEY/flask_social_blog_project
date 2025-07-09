@@ -6,6 +6,8 @@ from app.models import User, Post
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.email import send_password_reset_email
+from flask import g
+from flask_babel import get_locale
 
 
 
@@ -24,7 +26,6 @@ def index():
     page = request.args.get('page', 1, type=int)
     query = current_user.following_users_post()
 
-    print(f"The query its {query}")
     posts = query.paginate( page=page,
                         per_page=app.config['POSTS_PER_PAGE'], error_out=False)
     
@@ -63,6 +64,8 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
+
+    g.locale = str(get_locale())
 
 
 @app.route('/login', methods=['GET', 'POST'])
