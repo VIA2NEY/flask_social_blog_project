@@ -14,7 +14,7 @@
 
 - **Configuration de Flask-Babel**
 
-  - Creer le fichier babel.cfg dans le repertoire de l'application pour indiquer à `pybabel` quels fichiers doivent être analysés à la recherche de textes traduisibles exemples:
+  - Creer le fichier `babel.cfg` dans le repertoire de l'application pour indiquer à `pybabel` quels fichiers doivent être analysés à la recherche de textes traduisibles exemples:
     [python: app/**.py]
     [jinja2: app/templates/**.html]
 
