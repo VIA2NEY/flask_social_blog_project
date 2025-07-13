@@ -1,4 +1,4 @@
-from app import app
+from flask import Blueprint
 import os
 import click
 
@@ -20,7 +20,9 @@ de traduction en tant que fichier temporaire.
 
 """
 
-@app.cli.group()
+bp = Blueprint('cli', __name__, cli_group=None)
+
+@bp.cli.group()
 def translate():
     """Translation and localization commands."""
     pass
