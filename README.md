@@ -99,6 +99,12 @@ Commands:
 ```
 </details>
 
+<details>
+<summary>Instalation de ElasticSearch Via Docker</summary>
+
+CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e discovery.type=single-node -e xpack.security.enabled=false docker.elastic.co/elasticsearch/elasticsearch:9.0.3 `
+</details>
+
 ## Tuto Link
 
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world

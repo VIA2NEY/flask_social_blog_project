@@ -10,6 +10,7 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_babel import Babel
 from flask_babel import lazy_gettext as _l
+from elasticsearch import Elasticsearch
 
 
 app = Flask(__name__)
@@ -49,6 +50,12 @@ def create_app(config_class=Config):
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from app.cli import bp as cli_bp
+    app.register_blueprint(cli_bp)
+
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
 
     if not app.debug:
         if app.config['MAIL_SERVER']:
