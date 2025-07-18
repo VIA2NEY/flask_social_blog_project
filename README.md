@@ -105,6 +105,16 @@ Commands:
 CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e discovery.type=single-node -e xpack.security.enabled=false docker.elastic.co/elasticsearch/elasticsearch:9.0.3 `
 </details>
 
+
+<details>
+<summary>Instalation de Vagrant et de VirtualBox</summary>
+
+ 1. Installer Vagrant depuis la doc officielle: https://www.vagrantup.com/downloads.html puis redemarrer le pc pour que les modifications soient prises en compte 
+ 2. Installer VirtualBox depuis la doc officielle : https://www.virtualbox.org/wiki/Downloads
+ 3. executer dans la console la commande vagrant init <nom du système d'exploitation> dans notre cas ``vagrant init ubuntu/jammy64``
+
+</details>
+
 ## Tuto Link
 
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
