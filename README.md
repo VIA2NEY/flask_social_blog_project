@@ -123,7 +123,11 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
     - `vagrant halt`: Pour arreter la machine virtuelle
 
     - `vagrant reload`: Dans le cas ou vous apportez des changement dans le fichier Vagrantfile, Pour redemarrer la machine virtuelle puis se connecter au terminal de la machine virtuelle avec la commande `vagrant ssh`
-    > **ATTENTION** : Ne pas oublier de redemarrer la machine virtuelle apres avoir apporté des changements dans le fichier Vagrantfile
+
+    > **ATTENTION** : 
+    - Pour pouvoir acceder deployer l'applicattion grace à la machine virtuelle, il faut aller dans la console vagrant et executer la commande `vagrant ssh` puis executer la commande `cd /project_name` pour acceder a l'application puis activer l'environment virtuelle `source venv/bin/activate` et enfin executer la commande  `gunicorn -b 0.0.0.0:8000 microblog:app` pour lancer l'application web
+      >> Pour le cas ou l'application a deja ete cloner via git     
+    - Pour pouvoir acceder a l'application web sur la machine hote, il faut utiliser l'adresse suivante `http://192.168.56.10:8000` et desactiver le pare-feu ou autoriser l'acces aux port 8000 dans le pare-feu pour pouvoir acceder au site.
 
 </details>
 
