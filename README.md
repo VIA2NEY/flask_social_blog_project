@@ -112,6 +112,22 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
  1. Installer Vagrant depuis la doc officielle: https://www.vagrantup.com/downloads.html puis redemarrer le pc pour que les modifications soient prises en compte 
  2. Installer VirtualBox depuis la doc officielle : https://www.virtualbox.org/wiki/Downloads
  3. executer dans la console la commande vagrant init <nom du système d'exploitation> dans notre cas ``vagrant init ubuntu/jammy64``
+ 4. En cas de deconnexion les étapes pour ce reconnecter sont les suivantes:
+
+    - `vagrant status`: Pour verifier si vagrant est bien installé et que la machine virtuelle est bien allumée ou non
+
+    - `vagrant up`: Dans le cas ou la machine virtuelle n'est pas allumée, allumer la machine virtuelle
+
+    - `vagrant ssh`: Pour se connecter au terminal de la machine virtuelle
+
+    - `vagrant halt`: Pour arreter la machine virtuelle
+
+    - `vagrant reload`: Dans le cas ou vous apportez des changement dans le fichier Vagrantfile, Pour redemarrer la machine virtuelle puis se connecter au terminal de la machine virtuelle avec la commande `vagrant ssh`
+
+    > **ATTENTION** : 
+    - Pour pouvoir acceder deployer l'applicattion grace à la machine virtuelle, il faut aller dans la console vagrant et executer la commande `vagrant ssh` puis executer la commande `cd /project_name` pour acceder a l'application puis activer l'environment virtuelle `source venv/bin/activate` et enfin executer la commande  `gunicorn -b 0.0.0.0:8000 microblog:app` pour lancer l'application web
+      >> Pour le cas ou l'application a deja ete cloner via git     
+    - Pour pouvoir acceder a l'application web sur la machine hote, il faut utiliser l'adresse suivante `http://192.168.56.10:8000` et desactiver le pare-feu ou autoriser l'acces aux port 8000 dans le pare-feu pour pouvoir acceder au site.
 
 </details>
 
