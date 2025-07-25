@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Service pour la base de données MySQL
+  mysql:
+    image: mysql:latest
+    container_name: microblog-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: <mot-de-passe-root>
+      MYSQL_DATABASE: microblog
+      MYSQL_USER: microblog
+      MYSQL_PASSWORD: <mot-de-passe-base-de-donnees>
+    networks:
+      - microblog-network
+    ports:
+      - "3306:3306"
+
+  # Service pour Elasticsearch (si nécessaire)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: elasticsearch
+    restart: always
+    environment:
+      discovery.type: single-node
+    networks:
+      - microblog-network
+    ports:
+      - "9200:9200"
+
+  # Service pour l'application microblog
+  microblog:
+    image: microblog:latest
+    container_name: microblog
+    restart: always
+    environment:
+      SECRET_KEY: my-secret-key
+      MAIL_SERVER: smtp.googlemail.com
+      MAIL_PORT: 587
+      MAIL_USE_TLS: "true"
+      MAIL_USERNAME: <votre-utilisateur-gmail>
+      MAIL_PASSWORD: <votre-mot-de-passe-gmail>
+      DATABASE_URL: mysql+pymysql://microblog:<mot-de-passe-base-de-donnees>@microblog-mysql/microblog
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    networks:
+      - microblog-network
+    ports:
+      - "8000:5000"
+
+networks:
+  microblog-network:
+    driver: bridge
