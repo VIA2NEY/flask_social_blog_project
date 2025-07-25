@@ -125,10 +125,41 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
     - `vagrant reload`: Dans le cas ou vous apportez des changement dans le fichier Vagrantfile, Pour redemarrer la machine virtuelle puis se connecter au terminal de la machine virtuelle avec la commande `vagrant ssh`
 
     > **ATTENTION** : 
-    - Pour pouvoir acceder deployer l'applicattion grace à la machine virtuelle, il faut aller dans la console vagrant et executer la commande `vagrant ssh` puis executer la commande `cd /project_name` pour acceder a l'application puis activer l'environment virtuelle `source venv/bin/activate` et enfin executer la commande  `gunicorn -b 0.0.0.0:8000 microblog:app` pour lancer l'application web
-      >> Pour le cas ou l'application a deja ete cloner via git     
-    - Pour pouvoir acceder a l'application web sur la machine hote, il faut utiliser l'adresse suivante `http://192.168.56.10:8000` et desactiver le pare-feu ou autoriser l'acces aux port 8000 dans le pare-feu pour pouvoir acceder au site.
+    > - Pour pouvoir acceder deployer l'applicattion grace à la machine virtuelle, il faut aller dans la console vagrant et executer la commande `vagrant ssh` puis executer la commande `cd /project_name` pour acceder a l'application puis activer l'environment virtuelle `source venv/bin/activate` et enfin executer la commande  `gunicorn -b 0.0.0.0:8000 microblog:app` pour lancer l'application web
+    >   Pour le cas ou l'application a deja ete cloner via git     
+    > - Pour pouvoir acceder a l'application web sur la machine hote, il faut utiliser l'adresse suivante `http://192.168.56.10:8000` et desactiver le pare-feu ou autoriser l'acces aux port 8000 dans le pare-feu pour pouvoir acceder au site.
 
+</details>
+
+<details>
+<summary> Docker </summary>
+
+  1. `docker build -t microblog:latest .`
+
+  2. ``docker run --name microblog -d -p 8000:5000 --rm microblog:latest``
+
+  3. `docker network create microblog-network`
+
+  4. `docker run --name mysql -d -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_DATABASE=microblog -e MYSQL_USER=microblog -e MYSQL_PASSWORD=<database-password> --network microblog-network mysql:latest`
+
+  5. `docker run --name microblog-phpmyadmin --network microblog-network -d -e PMA_HOST=mysql -p 8080:80 phpmyadmin/phpmyadmin` (Optionel)
+
+  6. `docker run --name elasticsearch -d --rm -p 9200:9200 -e discovery.type=single-node -e xpack.security.enabled=false --network microblog-network -t docker.elastic.co/elasticsearch/elasticsearch:8.11.1`
+
+  7. `docker run --name microblog -d -p 8000:5000 --rm -e SECRET_KEY=you-will-never  -e MAIL_SERVER=smtp.googlemail.com -e MAIL_PORT=587 -e MAIL_USE_TLS=true -e MAIL_USERNAME=<your-gmail-username> -e MAIL_PASSWORD=<your-gmail-password> --network microblog-network -e DATABASE_URL=mysql+pymysql://microblog:<database-password>@mysql/microblog  microblog:latest `
+
+  8. ### Vérifier l'état des conteneurs
+  Utilisez cette commande pour vous assurer que tous les conteneurs nécessaires sont en cours d'exécution :
+
+  `docker ps`
+
+  pour rerun les service au cas ou il on deja été installer et que vou avez fait autre chose juste resuivre toute les étapes de l'etape 2 jusqu'a 7 sauf le 3 ou juste faire
+
+  `docker start mysql`
+
+  `docker start elasticsearch`
+
+  `docker start microblog`
 </details>
 
 ## Tuto Link
