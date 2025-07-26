@@ -9,3 +9,4 @@ pip install flask-mail
 pip install pyjwt
 pip install flask-moment
 pip install flask-babel
+pip install elasticsearch

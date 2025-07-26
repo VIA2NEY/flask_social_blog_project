@@ -19,5 +19,7 @@ class Config:
     ADMINS = ['graceful.marten.wtte@letterhaven.net']
     LANGUAGES = ['en', 'fr', 'ko']
 
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+
     
     POSTS_PER_PAGE = 10
