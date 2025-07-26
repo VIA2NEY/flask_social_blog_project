@@ -165,7 +165,7 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
 
   - ## Environement reproductible
     ### Commandes à utiliser :
-      Lancer l'environnement complet :
+      1. #### Lancer l'environnement complet :
 
       Avec Docker Compose, tu peux démarrer tous les services en même temps avec cette commande :
 
@@ -173,13 +173,13 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
 
       Cette commande va télécharger les images si elles ne sont pas présentes, créer les conteneurs et les démarrer en arrière-plan.
 
-      Vérifier l'état des conteneurs :
+      2. #### Vérifier l'état des conteneurs :
 
       Pour vérifier si tous les conteneurs sont bien lancés, utilise :
       
       ``docker-compose ps``
 
-      Arrêter les conteneurs :
+      3. #### Arrêter les conteneurs :
 
       Si tu souhaites arrêter tous les conteneurs (tout en gardant les données) :
 
@@ -189,23 +189,24 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
 
       ``docker-compose stop``
 
-      Redémarrer les services :
+      4. #### Redémarrer les services :
 
       Pour redémarrer les services après un arrêt, tu peux utiliser :
 
       ``docker-compose restart``
-      Voir les logs d'un service spécifique :
+
+      5. #### Voir les logs d'un service spécifique :
 
       Pour voir les logs d'un service particulier, comme l'application microblog, tu peux utiliser :
 
       ``docker-compose logs -f microblog``
 
-      Supprimer les conteneurs et les volumes :
+      6. #### Supprimer les conteneurs et les volumes :
 
       Si tu veux tout supprimer, y compris les volumes (les données), utilise cette commande :
 
       ``docker-compose down -v``
-      Étapes d'utilisation :
+      
 </details>
 
 ## Tuto Link
