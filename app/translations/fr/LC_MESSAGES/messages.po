@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-17 02:26+0000\n"
+"POT-Creation-Date: 2025-07-28 22:58+0000\n"
 "PO-Revision-Date: 2025-07-06 23:49+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -94,7 +94,9 @@ msgstr "Félicitations, vous êtes désormais un utilisateur inscrit !"
 
 #: app/auth/routes.py:73
 msgid "Check your email for the instructions to reset your password"
-msgstr "Vérifiez votre e-mail pour les instructions permettant de réinitialiser votre mot de passe."
+msgstr ""
+"Vérifiez votre e-mail pour les instructions permettant de réinitialiser "
+"votre mot de passe."
 
 #: app/auth/routes.py:76 app/templates/auth/reset_password.html:5
 #: app/templates/auth/reset_password_request.html:5
@@ -146,7 +148,7 @@ msgstr "Vous ne pouvez pas vous désabonner de vous-même !"
 #: app/main/routes.py:153
 #, python-brace-format
 msgid "You are not following {username}."
-msgstr "Vous ne suivez pas {username}."
+msgstr "Vous ne suivez plus {username}."
 
 #: app/templates/_post.html:15
 #, python-format
@@ -196,6 +198,28 @@ msgstr "Dernière connexion"
 #, fuzzy
 msgid "Edit your profile"
 msgstr "Modifier votre profil"
+
+#: app/templates/user_popup.html:7
+msgid "Last seen on"
+msgstr "Dernière connexion"
+
+#: app/templates/user_popup.html:9
+#, python-format
+msgid "%(count)d followers"
+msgstr "%(count)d abonne(e)s"
+
+#: app/templates/user_popup.html:9
+#, python-format
+msgid "%(count)d following"
+msgstr "%(count)d suivies"
+
+#: app/templates/user_popup.html:15
+msgid "Follow"
+msgstr "Suivre"
+
+#: app/templates/user_popup.html:22
+msgid "Unfollow"
+msgstr "Ne plus suivre"
 
 #: app/templates/auth/login.html:7
 msgid "New User?"
