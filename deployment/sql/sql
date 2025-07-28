@@ -1,0 +1,6 @@
+$ sudo mysql -u root
+mysql> create database microblog character set utf8 collate utf8_bin;
+mysql> create user 'microblog'@'localhost' identified by '<db-password>';
+mysql> grant all privileges on microblog.* to 'microblog'@'localhost';
+mysql> flush privileges;
+mysql> quit;
