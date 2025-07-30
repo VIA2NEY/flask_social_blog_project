@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-28 22:58+0000\n"
+"POT-Creation-Date: 2025-07-29 15:45+0000\n"
 "PO-Revision-Date: 2025-07-06 23:49+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -67,6 +67,7 @@ msgid "About me"
 msgstr "A propos de moi"
 
 #: app/forms.py:41 app/forms.py:63 app/main/forms.py:13 app/main/forms.py:33
+#: app/main/forms.py:50
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -111,15 +112,19 @@ msgstr "Votre mot de passe a été réinitialisé."
 msgid "Search"
 msgstr "Chercher"
 
+#: app/main/forms.py:48
+msgid "Message"
+msgstr "Message"
+
 #: app/main/routes.py:32
 msgid "Your post is now live!"
 msgstr "Votre publication est maintenant en ligne !"
 
-#: app/main/routes.py:46 app/templates/base.html:27
+#: app/main/routes.py:46 app/templates/base.html:37
 msgid "Home"
 msgstr "Accueil"
 
-#: app/main/routes.py:68 app/templates/base.html:30
+#: app/main/routes.py:68 app/templates/base.html:40
 msgid "Explore"
 msgstr "Explorer"
 
@@ -150,6 +155,14 @@ msgstr "Vous ne pouvez pas vous désabonner de vous-même !"
 msgid "You are not following {username}."
 msgstr "Vous ne suivez plus {username}."
 
+#: app/main/routes.py:192
+msgid "Your message has been sent."
+msgstr "Votre message a été envoyer avec succès."
+
+#: app/main/routes.py:194
+msgid "Send Message"
+msgstr "Envoyer un Message"
+
 #: app/templates/_post.html:15
 #, python-format
 msgid "%(username)s said %(when)s"
@@ -159,11 +172,15 @@ msgstr "%(username)s a dit %(when)s"
 msgid "Welcome to Microblog"
 msgstr "Bienvenue sur Microblog"
 
-#: app/templates/base.html:47
+#: app/templates/base.html:57
 msgid "Login"
 msgstr "Connexion"
 
-#: app/templates/base.html:54
+#: app/templates/base.html:62 app/templates/messages.html:4
+msgid "Messages"
+msgstr "Messages"
+
+#: app/templates/base.html:81
 msgid "Logout"
 msgstr "Deconnexion"
 
@@ -173,18 +190,31 @@ msgid "Hi, %(username)s!"
 msgstr "Salut, %(username)s!"
 
 #: app/templates/index.html:16 app/templates/search.html:12
-#: app/templates/user.html:39
+#: app/templates/user.html:47
 msgid "Newer posts"
 msgstr "Nouveaux posts"
 
 #: app/templates/index.html:21 app/templates/search.html:17
-#: app/templates/user.html:44
+#: app/templates/user.html:52
 msgid "Older posts"
-msgstr "posts plus anciens"
+msgstr "Anciens posts"
+
+#: app/templates/messages.html:12
+msgid "Newer messages"
+msgstr "Nouveaux messages"
+
+#: app/templates/messages.html:17
+msgid "Older messages"
+msgstr "Anciens messages"
 
 #: app/templates/search.html:4
 msgid "Search Results"
 msgstr "Résultats de la recherche"
+
+#: app/templates/send_message.html:5
+#, python-format
+msgid "Send Message to %(recipient)s"
+msgstr "Envoyer un message à %(recipient)s"
 
 #: app/templates/user.html:8
 msgid "User"
@@ -194,24 +224,28 @@ msgstr "Utilisateur"
 msgid "Last seen"
 msgstr "Dernière connexion"
 
+#: app/templates/user.html:11 app/templates/user_popup.html:9
+#, python-format
+msgid "%(count)d followers"
+msgstr "%(count)d Abonne(e)s"
+
+#: app/templates/user.html:11 app/templates/user_popup.html:9
+#, python-format
+msgid "%(count)d following"
+msgstr "%(count)d Suivies"
+
 #: app/templates/user.html:13
 #, fuzzy
 msgid "Edit your profile"
 msgstr "Modifier votre profil"
 
+#: app/templates/user.html:33
+msgid "Send private message"
+msgstr "Envoyer un message en privé"
+
 #: app/templates/user_popup.html:7
 msgid "Last seen on"
 msgstr "Dernière connexion"
-
-#: app/templates/user_popup.html:9
-#, python-format
-msgid "%(count)d followers"
-msgstr "%(count)d abonne(e)s"
-
-#: app/templates/user_popup.html:9
-#, python-format
-msgid "%(count)d following"
-msgstr "%(count)d suivies"
 
 #: app/templates/user_popup.html:15
 msgid "Follow"
