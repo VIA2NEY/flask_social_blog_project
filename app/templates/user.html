@@ -7,8 +7,8 @@
             <td>
                 <h1>{{_('User') }}: {{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-                {% if user.last_seen %}<p>{{_('Last seen') }}: {{ moment(user.last_seen).fromNow()  }}</p>{% endif %}
-                <p>{{ user.followers_count() }} followers, {{ user.following_count() }} following.</p>
+                {% if user.last_seen %}<p>{{_('Last seen') }}: {{ moment(user.last_seen).fromNow()  }}</p>{% endif %}       
+                <p>{{ _('%(count)d followers', count=user.followers_count()) }}, {{ _('%(count)d following', count=user.following_count()) }}</p>
                 {% if user == current_user %}
                 <p><a href="{{ url_for('main.edit_profile') }}">{{_('Edit your profile')}}</a></p>
                 {% elif not current_user.is_following(user) %}
@@ -24,6 +24,14 @@
                         {{ form.hidden_tag() }}
                         {{ form.submit(value='Unfollow', class_='btn btn-primary') }}
                     </form>
+                </p>
+                {% endif %}
+
+                {% if user != current_user %}
+                <p>
+                    <a href="{{ url_for('main.send_message', recipient=user.username) }}">
+                        {{ _('Send private message') }}
+                    </a>
                 </p>
                 {% endif %}
             </td>
