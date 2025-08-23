@@ -13,17 +13,17 @@ es = Elasticsearch('http://localhost:9200')
 
 # -------------------------------------
 
-from app.search import add_to_index, remove_from_index, query_index
-from app.models import Post
-for post in Post.query.scalar():
-     add_to_index('posts', post)
+# from app.search import add_to_index, remove_from_index, query_index
+# from app.models import Post
+# for post in Post.query.scalar():
+#      add_to_index('posts', post)
 # query_index('posts', 'one two three four five', 1, 100)
 # # ([15, 13, 12, 4, 11, 8, 14], 7)
 # query_index('posts', 'one two three four five', 1, 3)
 # # ([15, 13, 12], 7)
 # query_index('posts', 'one two three four five', 2, 3)
 # ([4, 11, 8], 7)
-query_index('posts', 'one two three four five', 3, 3)
+# query_index('posts', 'one two three four five', 3, 3)
 # ([14], 7)
 
 

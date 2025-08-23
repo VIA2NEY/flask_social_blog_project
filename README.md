@@ -209,6 +209,26 @@ CMD : `docker run --name elasticsearch -d --rm -p 9200:9200 --memory="2GB" -e di
       
 </details>
 
+
+
+<details>
+<summary>Python Redis-Queue (rq)</summary>
+
+le package rq permet de gerer les taches en arriere plan, pour ce faire l'executable de redis doit être installer sur l'ordinateur. Mais petit soucis le package rq ne semble pas fonctioner pas avec windows.
+
+>> **Details :**  
+>> On obtient l'erreur : ``AttributeError: module 'os' has no attribute 'fork'  ``  
+>> Ça se produit parce que Windows n’a pas la fonction os.fork() (elle existe seulement sur Linux et macOS).  
+
+- Ce que j'ai donc fait c'est d'installer l'image de redis via docker avec la commande `docker run -d --name redis-container -p 6379:6379 redis` ce qui vas telecharger l'image de redis et demarrer un conteneur redis-container.
+- et de lancer le worker rq dans le conteneur que je crée flask-worker avec la commande `docker run -it --name flask-worker --link redis-container:redis -v ${PWD}:/app -w /app python:3.12-slim sh -c "pip install -r requirements.txt && rq worker microblog-tasks --url redis://redis:6379/0"` .
+- tu peux aussi lancer le dashboard de rq dans le powershell avec la commande `rq dashboard` qui vas donner un lien vers le dashboard de rq : 0.0.0.0:9181.
+
+Après tout ça dans le cas ou tu veux redemarer le worker tu peux utiliser la commande `docker start -ai flask-worker` avec -a pour attacher la sortie, -i pour l’interactif c'est a dire voir les differente interaction dans le powershell ou `docker start flask-worker`  
+ou même le faire dans l'app docker desktop, mais oujour lancer le container redis avant lui
+
+</details>
+
 ## Tuto Link
 
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world

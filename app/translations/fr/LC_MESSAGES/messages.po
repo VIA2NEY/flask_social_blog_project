@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-29 15:45+0000\n"
+"POT-Creation-Date: 2025-08-23 01:08+0000\n"
 "PO-Revision-Date: 2025-07-06 23:49+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:23
+#: app/__init__.py:25
 msgid "Please log in to access this page."
 msgstr "Veuillez vous connecter pour accéder à cette page."
 
@@ -155,13 +155,21 @@ msgstr "Vous ne pouvez pas vous désabonner de vous-même !"
 msgid "You are not following {username}."
 msgstr "Vous ne suivez plus {username}."
 
-#: app/main/routes.py:192
+#: app/main/routes.py:194
 msgid "Your message has been sent."
 msgstr "Votre message a été envoyer avec succès."
 
-#: app/main/routes.py:194
+#: app/main/routes.py:196
 msgid "Send Message"
 msgstr "Envoyer un Message"
+
+#: app/main/routes.py:238
+msgid "An export task is currently in progress"
+msgstr "Une tâche d'exportation est actuellement en cours."
+
+#: app/main/routes.py:240
+msgid "Exporting posts..."
+msgstr "Exportation des posts..."
 
 #: app/templates/_post.html:15
 #, python-format
@@ -190,12 +198,12 @@ msgid "Hi, %(username)s!"
 msgstr "Salut, %(username)s!"
 
 #: app/templates/index.html:16 app/templates/search.html:12
-#: app/templates/user.html:47
+#: app/templates/user.html:52
 msgid "Newer posts"
 msgstr "Nouveaux posts"
 
 #: app/templates/index.html:21 app/templates/search.html:17
-#: app/templates/user.html:52
+#: app/templates/user.html:57
 msgid "Older posts"
 msgstr "Anciens posts"
 
@@ -239,7 +247,11 @@ msgstr "%(count)d Suivies"
 msgid "Edit your profile"
 msgstr "Modifier votre profil"
 
-#: app/templates/user.html:33
+#: app/templates/user.html:16
+msgid "Export your posts"
+msgstr "Exporter vos postes"
+
+#: app/templates/user.html:38
 msgid "Send private message"
 msgstr "Envoyer un message en privé"
 
@@ -271,6 +283,16 @@ msgstr "Mot de passe oublié ?"
 #: app/templates/auth/login.html:10
 msgid "Click to Reset It"
 msgstr "Cliquez ici pour le réinitialiser"
+
+#: app/templates/email/export_posts.html:2
+msgid "Please find attached the archive of your posts that you requested."
+msgstr ""
+"Veuillez trouver ci-joint l'archive de vos messages que vous avez "
+"demandée."
+
+#: app/templates/email/export_posts.html:3
+msgid "Sincerely,"
+msgstr "Cordialement,"
 
 #: app/templates/errors/404.html:4
 msgid "File Not Found"
