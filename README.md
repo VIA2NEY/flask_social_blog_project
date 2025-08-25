@@ -254,3 +254,14 @@ ou même le faire dans l'app docker desktop, mais oujour lancer le container red
     1. flask db migrate -m "nom de migration"
 
     2. flask db upgrade
+
+
+## Piste d'ameliorations et d'optimisation
+
+- Mettre le multi-langues dans les messages apis et translate en fr
+
+- Faire les apis pour les posts et les commentaires
+
+- Connecter avec une app mobile
+
+- ...
